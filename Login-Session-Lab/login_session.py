@@ -10,14 +10,14 @@ def home():
 		if request.method == 'POST':
 			age = request.form["author's age"]
 			login_session['age'] = age
-			name = request.form["quate name"]
+			name = request.form["quoteName"]
 			login_session['name'] = name
 			author = request.form["quote's author"]
 			login_session['author'] = author
-			return render_template('thanks.html')
-
+			return render_template("display.html",age = age,name = name,author = author)
+		return render_template("home.html")
 	except :
-		redirect(url_for('error'))		
+		return redirect(url_for('error'))		
 		
 
 
@@ -30,7 +30,7 @@ def error():
 @app.route('/display')
 def display():
 
-	return render_template('display.html', ) # What variables are needed?
+	return render_template('display.html') # What variables are needed?
 
 
 @app.route('/thanks')
